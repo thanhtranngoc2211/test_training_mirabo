@@ -1,0 +1,17 @@
+version: '3'
+services:
+  golang-app:
+    build:
+      context: ./be
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  react-app:
+    build:
+      context: ./fe
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - golang-app
